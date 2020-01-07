@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.model.Neighbour;
+import com.openclassrooms.entrevoisins.service.DummyNeighbourGenerator;
 
 
 public class  DetailNeighbour extends AppCompatActivity{
@@ -87,6 +88,9 @@ public class  DetailNeighbour extends AppCompatActivity{
 
             }
         });
+
+
+
     }
 
 
