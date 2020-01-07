@@ -16,10 +16,15 @@ public interface NeighbourApiService {
      */
     List<Neighbour> getNeighbours();
 
+    //Get favorite Neighbours
+
+    List<Neighbour> getFavoriteNeighbours();
+
+
+
     /**
      * Deletes a neighbour
      * @param neighbour
      */
     void deleteNeighbour(Neighbour neighbour);
-
 }
