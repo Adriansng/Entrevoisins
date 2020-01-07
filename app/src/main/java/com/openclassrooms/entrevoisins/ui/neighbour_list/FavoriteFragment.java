@@ -26,9 +26,6 @@ public class FavoriteFragment extends Fragment {
     private NeighbourApiService mApiService;
     private List<Neighbour> mFavoriteNeighbours;
     private RecyclerView mRecyclerView;
-    public FavoriteFragment(){
-
-    }
 
     public static FavoriteFragment newInstance() {
         FavoriteFragment fragment = new FavoriteFragment();
@@ -55,7 +52,7 @@ public class FavoriteFragment extends Fragment {
 
     // Init the list favorite neighbours
     private void initList() {
-        mFavoriteNeighbours= mApiService.getNeighbours();
+        mFavoriteNeighbours= mApiService.getFavoriteNeighbours();
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mFavoriteNeighbours));
     }
 

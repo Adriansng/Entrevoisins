@@ -11,6 +11,11 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
 
     private List<Neighbour> neighbours = DummyNeighbourGenerator.generateNeighbours();
 
+    private List<Neighbour> favoriteNeighbours = DummyNeighbourGenerator.generateFavorite();
+
+    @Override
+    public List<Neighbour> getFavoriteNeighbours(){return favoriteNeighbours;}
+
 
     /**
      * {@inheritDoc}
