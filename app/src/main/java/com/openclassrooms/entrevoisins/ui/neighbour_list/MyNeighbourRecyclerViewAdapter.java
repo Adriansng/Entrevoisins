@@ -23,8 +23,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static android.support.v4.app.ActivityCompat.startActivityForResult;
-import static java.lang.Boolean.TRUE;
+import static android.app.Activity.RESULT_OK;
 
 public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeighbourRecyclerViewAdapter.ViewHolder> {
 
@@ -54,7 +53,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             @Override
             public void onClick(View v) {
                 Context context= v.getContext();
-                Intent intent= new Intent(context,DetailNeighbour.class);
+                Intent intent= new Intent(context, DetailNeighbourActivty.class);
                 intent.putExtra("ID_NEIGHBOUR",neighbour.getId());
                 intent.putExtra("NAME_NEIGHBOUR",neighbour.getName());
                 intent.putExtra("AVATAR_NEIGHBOUR",neighbour.getAvatarUrl());
@@ -62,7 +61,10 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                 context.startActivity(intent);
             }
 
+
         });
+
+
 
         holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +73,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             }
         });
     }
+
 
 
     @Override
@@ -91,4 +94,6 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             ButterKnife.bind(this, view);
         }
     }
+
+
 }

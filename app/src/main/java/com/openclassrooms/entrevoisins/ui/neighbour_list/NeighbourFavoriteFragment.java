@@ -21,14 +21,14 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
-public class FavoriteFragment extends Fragment {
+public class NeighbourFavoriteFragment extends Fragment {
 
     private NeighbourApiService mApiService;
     private List<Neighbour> mFavoriteNeighbours;
     private RecyclerView mRecyclerView;
 
-    public static FavoriteFragment newInstance() {
-        FavoriteFragment fragment = new FavoriteFragment();
+    public static NeighbourFavoriteFragment newInstance() {
+        NeighbourFavoriteFragment fragment = new NeighbourFavoriteFragment();
         return fragment;
     }
 
@@ -53,7 +53,7 @@ public class FavoriteFragment extends Fragment {
     // Init the list favorite neighbours
     private void initList() {
         mFavoriteNeighbours= mApiService.getFavoriteNeighbours();
-        mRecyclerView.setAdapter(new MyFavoriteNeighbourRecyclerViewAdapter(mFavoriteNeighbours));
+        mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mFavoriteNeighbours));
     }
 
     @Override

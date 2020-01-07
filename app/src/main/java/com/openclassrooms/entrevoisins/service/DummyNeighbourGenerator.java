@@ -18,7 +18,7 @@ import static java.util.Collections.addAll;
 
 public abstract class DummyNeighbourGenerator {
 
-    public static List<Neighbour> DUMMY_NEIGHBOURS = Arrays.asList(
+        public static List<Neighbour> DUMMY_NEIGHBOURS = Arrays.asList(
             new Neighbour(1, "Caroline", "http://i.pravatar.cc/150?u=a042581f4e29026704d",false),
             new Neighbour(2, "Jack", "http://i.pravatar.cc/150?u=a042581f4e29026704e",false),
             new Neighbour(3, "Chloé", "http://i.pravatar.cc/150?u=a042581f4e29026704f",false),

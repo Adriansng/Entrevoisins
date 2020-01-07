@@ -1,9 +1,9 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -17,10 +17,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.model.Neighbour;
-import com.openclassrooms.entrevoisins.service.DummyNeighbourGenerator;
 
 
-public class  DetailNeighbour extends AppCompatActivity{
+public class DetailNeighbourActivty extends AppCompatActivity{
 
 
     @Override
@@ -60,12 +59,12 @@ public class  DetailNeighbour extends AppCompatActivity{
 
 
         /* BUTTON FAVOR */
-
         boolean[] favoriteNeighbour = {getIntent().getBooleanExtra("FAVORITE_NEIGHBOUR", false)};
         ImageButton buttonFavor = (ImageButton) findViewById(R.id.favory_button);
         if(favoriteNeighbour[0]){
             buttonFavor.setImageDrawable(getResources().getDrawable(R.drawable.yellow_star));
         }
+
         buttonFavor.setOnClickListener(new View.OnClickListener() {
 
 
@@ -79,22 +78,19 @@ public class  DetailNeighbour extends AppCompatActivity{
                     Neighbour neighbour= new Neighbour(idNeighbour,nameAvatar,neighbourAvatar, false);
                     neighbour.setFavorite(true);
 
+
                 } else {
                     buttonFavor.setImageDrawable(getResources().getDrawable(R.drawable.no_yellow_star));
                     favoriteNeighbour[0] = false;
                     Neighbour neighbour= new Neighbour(idNeighbour,nameAvatar,neighbourAvatar, true);
                     neighbour.setFavorite(false);
+
                 }
 
+
             }
+
         });
 
-
-
     }
-
-
-
-
-
 }
