@@ -23,8 +23,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static android.app.Activity.RESULT_OK;
-
 public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeighbourRecyclerViewAdapter.ViewHolder> {
 
     private final List<Neighbour> mNeighbours;
@@ -53,7 +51,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             @Override
             public void onClick(View v) {
                 Context context= v.getContext();
-                Intent intent= new Intent(context, DetailNeighbourActivty.class);
+                Intent intent= new Intent(context, DetailNeighbourActivity.class);
                 intent.putExtra("ID_NEIGHBOUR",neighbour.getId());
                 intent.putExtra("NAME_NEIGHBOUR",neighbour.getName());
                 intent.putExtra("AVATAR_NEIGHBOUR",neighbour.getAvatarUrl());

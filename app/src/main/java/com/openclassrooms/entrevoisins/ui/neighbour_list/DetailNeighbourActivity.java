@@ -21,7 +21,7 @@ import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
 
-public class DetailNeighbourActivty extends AppCompatActivity{
+public class DetailNeighbourActivity extends AppCompatActivity{
     private NeighbourApiService mApiService;
 
     @Override
