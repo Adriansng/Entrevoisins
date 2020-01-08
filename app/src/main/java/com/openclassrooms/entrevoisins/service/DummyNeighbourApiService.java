@@ -5,6 +5,7 @@ import android.os.Build;
 
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 public class DummyNeighbourApiService implements  NeighbourApiService {
 
     private List<Neighbour> neighbours = DummyNeighbourGenerator.generateNeighbours();
-    private List<Neighbour> favoriteNeighbour = DummyNeighbourGenerator.generateNeighbours();
+    private List<Neighbour> favoriteNeighbour = new ArrayList<>();
 
     /**
      * {@inheritDoc}
@@ -28,10 +29,14 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
 
     @Override
     public List<Neighbour> getFavoriteNeighbours(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            favoriteNeighbour.removeIf(neighbour -> !neighbour.getFavorite());
-        }
-        return favoriteNeighbour;}
+       favoriteNeighbour.clear();
+       for (Neighbour n : neighbours) {
+           if(n.getFavorite()){
+               favoriteNeighbour.add(n);
+           }
+       }
+        return favoriteNeighbour;
+    }
     /**
      * {@inheritDoc}
      */
@@ -39,6 +44,11 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
     public void deleteNeighbour(Neighbour neighbour) {
         neighbours.remove(neighbour);
         favoriteNeighbour.remove(neighbour);
+    }
+
+    @Override
+    public Neighbour getNeighbours(int id) {
+        return neighbours.get(id-1);
     }
 
 

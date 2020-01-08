@@ -16,11 +16,13 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
+import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
 
 public class DetailNeighbourActivty extends AppCompatActivity{
-
+    private NeighbourApiService mApiService;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class DetailNeighbourActivty extends AppCompatActivity{
         setContentView(R.layout.activity_detail_neighbour);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar2));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mApiService= DI.getNeighbourApiService();
 
         /* ID */
 
@@ -59,36 +62,26 @@ public class DetailNeighbourActivty extends AppCompatActivity{
 
 
         /* BUTTON FAVOR */
-        boolean[] favoriteNeighbour = {getIntent().getBooleanExtra("FAVORITE_NEIGHBOUR", false)};
-        ImageButton buttonFavor = (ImageButton) findViewById(R.id.favory_button);
-        if(favoriteNeighbour[0]){
+        final boolean favoriteNeighbour = mApiService.getNeighbours(idNeighbour).getFavorite();
+        ImageButton buttonFavor = findViewById(R.id.favory_button);
+        if(favoriteNeighbour){
             buttonFavor.setImageDrawable(getResources().getDrawable(R.drawable.yellow_star));
+        }else {
+            buttonFavor.setImageDrawable(getResources().getDrawable(R.drawable.no_yellow_star));
         }
 
-        buttonFavor.setOnClickListener(new View.OnClickListener() {
+        buttonFavor.setOnClickListener(v -> {
 
-
-            @Override
-            public void onClick(View v) {
-
-
-                if (!favoriteNeighbour[0]) {
+                if (!favoriteNeighbour) {
                     buttonFavor.setImageDrawable(getResources().getDrawable(R.drawable.yellow_star));
-                    favoriteNeighbour[0] =true;
-                    Neighbour neighbour= new Neighbour(idNeighbour,nameAvatar,neighbourAvatar, false);
-                    neighbour.setFavorite(true);
+                    mApiService.getNeighbours(idNeighbour).setFavorite(true);
 
 
                 } else {
                     buttonFavor.setImageDrawable(getResources().getDrawable(R.drawable.no_yellow_star));
-                    favoriteNeighbour[0] = false;
-                    Neighbour neighbour= new Neighbour(idNeighbour,nameAvatar,neighbourAvatar, true);
-                    neighbour.setFavorite(false);
+                    mApiService.getNeighbours(idNeighbour).setFavorite(false);
 
                 }
-
-
-            }
 
         });
 

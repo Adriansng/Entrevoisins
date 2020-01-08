@@ -27,4 +27,11 @@ public interface NeighbourApiService {
      * @param neighbour
      */
     void deleteNeighbour(Neighbour neighbour);
+
+    /**
+     * get a single neighbour by id
+     *@param id
+     */
+    Neighbour getNeighbours(int id);
+
 }
