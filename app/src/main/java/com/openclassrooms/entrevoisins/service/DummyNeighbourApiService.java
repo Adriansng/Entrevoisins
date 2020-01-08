@@ -1,12 +1,9 @@
 package com.openclassrooms.entrevoisins.service;
 
-import android.annotation.SuppressLint;
-import android.os.Build;
 
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**

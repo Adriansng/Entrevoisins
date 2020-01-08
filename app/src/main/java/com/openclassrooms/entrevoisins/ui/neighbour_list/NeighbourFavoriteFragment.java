@@ -20,17 +20,16 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
+import java.util.Objects;
 
 public class NeighbourFavoriteFragment extends Fragment {
 
     private NeighbourApiService mApiService;
-    private List<Neighbour> mFavoriteNeighbours;
     private RecyclerView mRecyclerView;
     private MyNeighbourRecyclerViewAdapter mAdapter;
 
     public static NeighbourFavoriteFragment newInstance() {
-        NeighbourFavoriteFragment fragment = new NeighbourFavoriteFragment();
-        return fragment;
+        return new NeighbourFavoriteFragment();
     }
 
     @Override
@@ -46,14 +45,14 @@ public class NeighbourFavoriteFragment extends Fragment {
         Context context= view.getContext();
         mRecyclerView=(RecyclerView) view;
         mRecyclerView.setLayoutManager((new LinearLayoutManager(context)));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()),DividerItemDecoration.VERTICAL));
         initList();
         return view;
     }
 
     // Init the list favorite neighbours
     private void initList() {
-        mFavoriteNeighbours= mApiService.getFavoriteNeighbours();
+        List<Neighbour> mFavoriteNeighbours = mApiService.getFavoriteNeighbours();
         mAdapter =new MyNeighbourRecyclerViewAdapter(mFavoriteNeighbours);
         mRecyclerView.setAdapter(mAdapter);
     }

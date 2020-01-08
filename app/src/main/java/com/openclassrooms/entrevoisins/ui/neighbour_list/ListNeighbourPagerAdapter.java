@@ -13,11 +13,11 @@ import com.openclassrooms.entrevoisins.R;
 public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    public static final int [] TAB_TITLES =
+    private static final int [] TAB_TITLES =
             new int[] {R.string.tab_neighbour_title,R.string.tab_favorites_title};
     private final Context mContext;
 
-    public ListNeighbourPagerAdapter(Context context,FragmentManager fm) {
+    ListNeighbourPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
     }
