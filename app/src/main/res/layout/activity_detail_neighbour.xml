@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -39,114 +38,10 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-
-
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
-
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#DBD6D6"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="16dp">
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginStart="2dp"
-                app:cardCornerRadius="5dp"
-                app:cardMaxElevation="@dimen/cardview_default_elevation"
-                tools:ignore="PrivateResource">
-
-                <TextView
-                    android:id="@+id/name_description.txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/info_name"
-                    android:paddingTop="20dp"
-                    android:paddingStart="20dp"
-                    android:textSize="@dimen/text_size_title_detail"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/info_adress"
-                    android:paddingTop="60dp"
-                    android:paddingStart="20dp"
-                    android:textSize="@dimen/text_size_detail"
-                    tools:ignore="RtlSymmetry" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/info_phone"
-                    android:paddingTop="110dp"
-                    android:paddingStart="20dp"
-                    android:textSize="@dimen/text_size_detail"
-                    tools:ignore="RtlSymmetry" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/info_facebook"
-                    android:paddingTop="160dp"
-                    android:paddingStart="20dp"
-                    android:textSize="@dimen/text_size_detail"
-                    android:paddingBottom="15dp"
-                    tools:ignore="RtlSymmetry" />
-
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginStart="2dp"
-                app:cardCornerRadius="5dp"
-                app:cardMaxElevation="@dimen/cardview_default_elevation"
-                tools:ignore="PrivateResource">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingStart="20dp"
-                    android:paddingTop="20dp"
-                    android:text="@string/title_description_detail"
-                    android:textSize="@dimen/text_size_title_detail"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/description_detail_text"
-                    android:paddingTop="60dp"
-                    android:paddingStart="20dp"
-                    android:paddingBottom="10dp"
-                    tools:ignore="RtlSymmetry" />
-
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-
-    </android.support.v4.widget.NestedScrollView>
+    <include layout="@layout/content_detail"/>
 
     <ImageButton
         android:id="@+id/favory_button"
@@ -160,7 +55,5 @@
         android:background="@drawable/round_button"
         app:srcCompat="@drawable/no_yellow_star"
         android:contentDescription="@string/description" />
-
-
 
 </android.support.design.widget.CoordinatorLayout>
