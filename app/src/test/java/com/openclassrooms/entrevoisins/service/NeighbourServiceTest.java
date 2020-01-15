@@ -40,4 +40,12 @@ public class NeighbourServiceTest {
         service.deleteNeighbour(neighbourToDelete);
         assertFalse(service.getNeighbours().contains(neighbourToDelete));
     }
+
+    @Test
+    public void addNeighbourFavorite() {
+        List<Neighbour> favoriteNeighbours = service.getFavoriteNeighbours();
+        List<Neighbour> expectedFavoriteNeighbours = DummyNeighbourGenerator.DUMMY_NEIGHBOURS;
+
+
+    }
 }

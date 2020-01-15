@@ -46,6 +46,9 @@
                 android:paddingTop="60dp"
                 android:paddingStart="20dp"
                 android:textSize="@dimen/text_size_detail"
+                android:drawableStart="@drawable/ic_person_add_white_24dp"
+                android:drawablePadding="5dp"
+                android:singleLine="true"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
@@ -55,6 +58,9 @@
                 android:paddingTop="110dp"
                 android:paddingStart="20dp"
                 android:textSize="@dimen/text_size_detail"
+                android:drawableStart="@drawable/ic_person_add_white_24dp"
+                android:drawablePadding="5dp"
+                android:singleLine="true"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
@@ -65,6 +71,9 @@
                 android:paddingStart="20dp"
                 android:textSize="@dimen/text_size_detail"
                 android:paddingBottom="15dp"
+                android:drawableStart="@drawable/ic_person_add_white_24dp"
+                android:drawablePadding="5dp"
+                android:singleLine="true"
                 tools:ignore="RtlSymmetry" />
 
 

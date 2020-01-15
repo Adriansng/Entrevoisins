@@ -20,6 +20,7 @@ import java.util.Objects;
 
 public class DetailNeighbourActivity extends AppCompatActivity{
     private NeighbourApiService mApiService;
+    private boolean favoriteNeighbour;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,27 +60,27 @@ public class DetailNeighbourActivity extends AppCompatActivity{
 
 
         /* BUTTON FAVOR */
-        final boolean[] favoriteNeighbour = {mApiService.getNeighbours(idNeighbour).getFavorite()};
+        favoriteNeighbour = mApiService.getNeighbours(idNeighbour).getFavorite();
         ImageButton buttonFavor = findViewById(R.id.favory_button);
 
-        if(favoriteNeighbour[0]){
+        if(favoriteNeighbour){
             buttonFavor.setImageDrawable(getResources().getDrawable(R.drawable.yellow_star));
-        }else {
+            }else {
             buttonFavor.setImageDrawable(getResources().getDrawable(R.drawable.no_yellow_star));
-        }
+             }
 
         buttonFavor.setOnClickListener(v -> {
 
-                if (!favoriteNeighbour[0]) {
+                if (!favoriteNeighbour) {
                     buttonFavor.setImageDrawable(getResources().getDrawable(R.drawable.yellow_star));
                     mApiService.getNeighbours(idNeighbour).setFavorite(true);
-                    favoriteNeighbour[0] =true;
+                    favoriteNeighbour =true;
 
 
                 } else {
                     buttonFavor.setImageDrawable(getResources().getDrawable(R.drawable.no_yellow_star));
                     mApiService.getNeighbours(idNeighbour).setFavorite(false);
-                    favoriteNeighbour[0]=false;
+                    favoriteNeighbour=false;
                 }
 
         });
