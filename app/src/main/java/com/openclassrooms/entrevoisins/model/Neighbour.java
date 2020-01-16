@@ -1,7 +1,9 @@
 package com.openclassrooms.entrevoisins.model;
 
+import com.openclassrooms.entrevoisins.service.DummyNeighbourGenerator;
 
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * Model object representing a Neighbour
@@ -61,6 +63,12 @@ public class Neighbour {
     public boolean getFavorite() { return favorite;}
 
     public void setFavorite(boolean favorite) {this.favorite = favorite;}
+
+    //Generate random neighbour
+
+    public static Neighbour random() {
+        return DummyNeighbourGenerator.DUMMY_NEIGHBOURS.get(new Random().nextInt(DummyNeighbourGenerator.DUMMY_NEIGHBOURS.size()));
+    }
 
     @Override
     public boolean equals(Object o) {

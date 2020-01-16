@@ -34,6 +34,8 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
        }
         return favoriteNeighbour;
     }
+
+
     /**
      * {@inheritDoc}
      */
@@ -46,6 +48,11 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
     @Override
     public Neighbour getNeighbours(int id) {
         return neighbours.get(id);
+    }
+
+    @Override
+    public void addRandomNeighbour(Neighbour randomNeighbour) {
+        neighbours.add(Neighbour.random());
     }
 
 

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-abstract class DummyNeighbourGenerator {
+public abstract class DummyNeighbourGenerator {
 
-        static List<Neighbour> DUMMY_NEIGHBOURS = Arrays.asList(
+        public static List<Neighbour> DUMMY_NEIGHBOURS = Arrays.asList(
             new Neighbour(0, "Caroline", "http://i.pravatar.cc/150?u=a042581f4e29026704d",false),
             new Neighbour(1, "Jack", "http://i.pravatar.cc/150?u=a042581f4e29026704e",false),
             new Neighbour(2, "Chloé", "http://i.pravatar.cc/150?u=a042581f4e29026704f",false),

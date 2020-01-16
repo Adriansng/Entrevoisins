@@ -21,7 +21,6 @@ public interface NeighbourApiService {
     List<Neighbour> getFavoriteNeighbours();
 
 
-
     /**
      * Deletes a neighbour
      * @param neighbour
@@ -34,4 +33,8 @@ public interface NeighbourApiService {
      */
     Neighbour getNeighbours(int id);
 
+
+    //Generate random Neighbour
+
+    void addRandomNeighbour(Neighbour randomNeighbour);
 }
