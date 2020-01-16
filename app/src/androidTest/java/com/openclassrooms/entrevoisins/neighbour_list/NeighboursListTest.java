@@ -6,6 +6,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.events.AddNeighbourEvent;
 import com.openclassrooms.entrevoisins.ui.neighbour_list.ListNeighbourActivity;
 import com.openclassrooms.entrevoisins.utils.DeleteViewAction;
 
@@ -72,7 +73,21 @@ public class NeighboursListTest {
     }
 
     @Test
+    public void AddingRandomNeighbour(){
+        // Given: We add the element
+        // This is fixed
+        int ITEMS_COUNT =12;
+        onView(allOf(withId(R.id.list_neighbours),isDisplayed())).check(withItemCount(ITEMS_COUNT));
+        // When perform a click on a add icon
+        onView(allOf(withId(R.id.activity_add_neighbour_btn),isDisplayed())).perform(click());
+        // Then : the number of element is 13
+        onView(allOf(withId(R.id.list_neighbours),isDisplayed())).check(withItemCount(ITEMS_COUNT +1));
+
+    }
+
+    @Test
     public void detailActivityLaunch() {
+        // Given: We launch Detail Activity
         // When perform a click on launch activity
         onView(allOf(withId(R.id.list_neighbours),isDisplayed()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0,click()));
@@ -82,23 +97,22 @@ public class NeighboursListTest {
 
     @Test
     public void FavoriteButtonClick() {
+        // Given: We add the neighbour in favorite
         // When perform a click on launch activity
         onView(allOf(withId(R.id.list_neighbours),isDisplayed()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0,click()));
-        // Check favorite button is clickable
+        // Then: favorite button is clickable
         onView(withId(R.id.favory_button))
                 .check(matches(isClickable()));
-        //Check color button (neighbour no favorite)
+        // Then:  color button (neighbour no favorite)
         onView(withId(R.id.favory_button)).check(matches(withDrawable(R.drawable.no_yellow_star)));
-        // Check click button for add the neighbour in favorite
+        // When: click button for add the neighbour in favorite
         onView(withId(R.id.favory_button)).perform(click());
-        // Check color button (neighbour favorite)
+        // Then: color button (neighbour favorite)
         onView(withId(R.id.favory_button)).check(matches(withDrawable(R.drawable.yellow_star)));
-        // Check click button for remove the neighbour in favorite
+        // When: click button for remove the neighbour in favorite
         onView(withId(R.id.favory_button)).perform(click());
-        //Check color button (neighbour no favorite)
+        // Then: color button (neighbour no favorite)
         onView(withId(R.id.favory_button)).check(matches(withDrawable(R.drawable.no_yellow_star)));
-
     }
-
 }

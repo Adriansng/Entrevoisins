@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.lang.System.load;
 import static org.junit.Assert.assertEquals;
@@ -58,11 +59,23 @@ public class NeighbourServiceTest {
     }
 
     @Test
-    public void DetailAvatarNeighbour() {
+    public void detailAvatarNeighbour() {
         Neighbour neighbour= service.getNeighbours().get(0);
         neighbour.setAvatarUrl("Url");
         neighbour.setName("Name");
         assertEquals("Url",neighbour.getAvatarUrl());
         assertEquals("Name",neighbour.getName());
+    }
+
+    @Test
+    public void addRandomNeighbour() {
+        service.getNeighbours().clear();
+        service.addRandomNeighbour(Neighbour.random());
+        Neighbour newNeighbour = service.getNeighbours().get(0);
+        assertEquals(1,service.getNeighbours().size());
+        assertTrue(DummyNeighbourGenerator.DUMMY_NEIGHBOURS.stream().map(Neighbour::getAvatarUrl).collect(Collectors.toList()).contains(newNeighbour.getAvatarUrl()));
+        assertTrue(DummyNeighbourGenerator.DUMMY_NEIGHBOURS.stream().map(Neighbour::getName).collect(Collectors.toList()).contains(newNeighbour.getName()));
+        assertTrue(DummyNeighbourGenerator.DUMMY_NEIGHBOURS.stream().map(Neighbour::getId).collect(Collectors.toList()).contains(newNeighbour.getId()));
+        assertTrue(DummyNeighbourGenerator.DUMMY_NEIGHBOURS.stream().map(Neighbour::getFavorite).collect(Collectors.toList()).contains(newNeighbour.getFavorite()));
     }
 }
