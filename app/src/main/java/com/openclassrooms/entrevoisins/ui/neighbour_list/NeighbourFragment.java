@@ -2,7 +2,6 @@ package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,14 +23,11 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.List;
 import java.util.Objects;
 
-import butterknife.BindView;
-
 
 public class NeighbourFragment extends Fragment {
 
     private NeighbourApiService mApiService;
     private RecyclerView mRecyclerView;
-    private MyNeighbourRecyclerViewAdapter mAdapter;
 
     /**
      * Create and return a new instance
@@ -68,7 +64,7 @@ public class NeighbourFragment extends Fragment {
      */
     private void initList() {
         List<Neighbour> mNeighbours = mApiService.getNeighbours();
-        mAdapter =new MyNeighbourRecyclerViewAdapter(mNeighbours);
+        MyNeighbourRecyclerViewAdapter mAdapter = new MyNeighbourRecyclerViewAdapter(mNeighbours);
         mRecyclerView.setAdapter(mAdapter);
     }
 
