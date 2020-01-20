@@ -14,7 +14,6 @@ import org.junit.runners.JUnit4;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.lang.System.load;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;

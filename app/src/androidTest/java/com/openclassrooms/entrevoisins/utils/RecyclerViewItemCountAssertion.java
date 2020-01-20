@@ -12,6 +12,7 @@ import org.junit.Assert;
 public class RecyclerViewItemCountAssertion implements ViewAssertion {
         private final Matcher<Integer> matcher;
 
+
         public static RecyclerViewItemCountAssertion withItemCount(int expectedCount) {
             return withItemCount(Matchers.is(expectedCount));
         }
