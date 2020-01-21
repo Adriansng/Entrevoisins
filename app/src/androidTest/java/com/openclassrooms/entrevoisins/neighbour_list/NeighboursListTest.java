@@ -151,6 +151,7 @@ public class NeighboursListTest {
         appCompatImageButton4.perform(click());
         onView(allOf(withId(R.id.list_neighbours),isDisplayed())).perform(swipeLeft());
         onView(allOf(withId(R.id.list_neighbours),isDisplayed())).check(withItemCount(ITEMS_FAVORITE+1));
+        onView(allOf(withId(R.id.list_neighbours),isDisplayed())).perform(swipeRight());
         // When: click button for remove the neighbour in favorite
         onView(allOf(withId(R.id.list_neighbours),isDisplayed())).perform(RecyclerViewActions.actionOnItemAtPosition(0,click()));
         onView(withId(R.id.favory_button)).perform(click());
