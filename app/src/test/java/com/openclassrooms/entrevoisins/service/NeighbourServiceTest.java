@@ -1,9 +1,7 @@
 package com.openclassrooms.entrevoisins.service;
 
-import com.bumptech.glide.Glide;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
-import com.openclassrooms.entrevoisins.ui.neighbour_list.DetailNeighbourActivity;
 
 import org.hamcrest.collection.IsIterableContainingInAnyOrder;
 import org.junit.Before;
@@ -12,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
@@ -26,7 +25,6 @@ import static org.junit.Assert.assertTrue;
 public class NeighbourServiceTest {
 
     private NeighbourApiService service;
-    private DetailNeighbourActivity detailActivity;
 
     @Before
     public void setup() {
@@ -37,7 +35,7 @@ public class NeighbourServiceTest {
     public void getNeighboursWithSuccess() {
         List<Neighbour> neighbours = service.getNeighbours();
         List<Neighbour> expectedNeighbours = DummyNeighbourGenerator.DUMMY_NEIGHBOURS;
-        assertThat(neighbours, IsIterableContainingInAnyOrder.containsInAnyOrder(expectedNeighbours.toArray()));
+        assertThat(neighbours, IsIterableContainingInAnyOrder.containsInAnyOrder(Objects.requireNonNull(expectedNeighbours.toArray())));
     }
 
     @Test
