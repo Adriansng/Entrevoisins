@@ -1,10 +1,24 @@
 apply plugin: 'com.android.application'
+apply plugin: "org.sonarqube"
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "Entrevoisins"
+        property "sonar.projectKey", "com.openclassrooms.entrevoisins"
+        property "sonar.host.url", "http://192.114.1.1:9000"
+        property "sonar.language", "java"
+        property "sonar.sources", "src/main/"
+        property "sonar.login", "username"
+        property "sonar.password", "password"
+    }
+}
 
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.openclassrooms.entrevoisins"
         minSdkVersion 21
+        //noinspection OldTargetApi
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
