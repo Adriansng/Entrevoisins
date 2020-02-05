@@ -2,11 +2,11 @@
     <string name="app_name">Entrevoisins</string>
     <string name="tab_neighbour_title">My neighbours</string>
     <string name="tab_favorites_title">Favorites</string>
-    <string name="description_detail_text">Bonjour! Je souhaiterais faire de la marche nordique.Pas initiée, je recherche une ou plusieurs personnes susceptinles de m\'accompagner! J\'aim les jeux de cartes tels la belote et le tarot.</string>
+    <string name="description_detail_text">Bonjour! Je souhaiterais faire de la marche nordique.Pas initiée, je recherche une ou plusieurs personnes susceptinles de m\'accompagner! J\'aime les jeux de cartes tels la belote et le tarot.</string>
     <string name="title_description_detail">A propos de moi</string>
     <string name="info_facebook">Profil Facebook</string>
     <string name="info_phone">Numero de Telephone</string>
-    <string name="info_adress">Adresse</string>
+    <string name="info_address">Adresse</string>
     <string name="info_name">Name</string>
     <string name="description">TODO</string>
 </resources>

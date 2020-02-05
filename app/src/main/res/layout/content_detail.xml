@@ -42,7 +42,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/info_adress"
+                android:text="@string/info_address"
                 android:paddingTop="70dp"
                 android:paddingStart="20dp"
                 android:textSize="@dimen/text_size_detail"
