@@ -1,6 +1,7 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -12,15 +13,12 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
-import com.openclassrooms.entrevoisins.di.DI;
-import com.openclassrooms.entrevoisins.service.NeighbourApiService;
+import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import java.util.Objects;
 
 
 public class DetailNeighbourActivity extends AppCompatActivity {
-    private NeighbourApiService mApiService;
-    private boolean favoriteNeighbour;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,13 +26,16 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_neighbour);
         setSupportActionBar(findViewById(R.id.toolbar2));
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        mApiService = DI.getNeighbourApiService();
+        Intent intent = getIntent();
+        Neighbour neighbour = intent.getParcelableExtra("Neighbour");
 
-        /* ID */
-        int idNeighbour = getIntent().getIntExtra("ID_NEIGHBOUR", 1);
+
+        Integer idNeighbour = neighbour.getId();
+        String nameAvatar = neighbour.getName();
+        String neighbourAvatar = neighbour.getAvatarUrl();
+        final boolean[] favoriteNeighbour = {neighbour.getFavorite()};
 
         /* NAME NEIGHBOUR */
-        String nameAvatar = getIntent().getStringExtra("NAME_NEIGHBOUR");
         CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingTollBar);
         collapsingToolbarLayout.setTitle(nameAvatar);
 
@@ -43,7 +44,6 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         nameDescription.setText(nameAvatar);
 
         /* URL AVATAR */
-        String neighbourAvatar = getIntent().getStringExtra("AVATAR_NEIGHBOUR");
         ImageView avatarNeighbour = findViewById(R.id.detail_avatar_neighbour);
         RequestOptions options = new RequestOptions()
                 .centerCrop()
@@ -52,12 +52,9 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         Glide.with(this).load(neighbourAvatar).apply(options).into(avatarNeighbour);
 
 
-
         /* BUTTON FAVOR */
-        favoriteNeighbour = mApiService.getNeighbours(idNeighbour).getFavorite();
         ImageButton buttonFavor = findViewById(R.id.favory_button);
-
-        if (favoriteNeighbour) {
+        if (favoriteNeighbour[0]) {
             buttonFavor.setImageDrawable(getResources().getDrawable(R.drawable.yellow_star));
         } else {
             buttonFavor.setImageDrawable(getResources().getDrawable(R.drawable.no_yellow_star));
@@ -65,19 +62,21 @@ public class DetailNeighbourActivity extends AppCompatActivity {
 
         buttonFavor.setOnClickListener(v -> {
 
-            if (!favoriteNeighbour) {
+            if (!favoriteNeighbour[0]) {
                 buttonFavor.setImageDrawable(getResources().getDrawable(R.drawable.yellow_star));
-                mApiService.getNeighbours(idNeighbour).setFavorite(true);
-                favoriteNeighbour = true;
+                neighbour.setFavorite(true);
+                favoriteNeighbour[0] = true;
 
 
             } else {
                 buttonFavor.setImageDrawable(getResources().getDrawable(R.drawable.no_yellow_star));
-                mApiService.getNeighbours(idNeighbour).setFavorite(false);
-                favoriteNeighbour = false;
+                neighbour.setFavorite(false);
+                favoriteNeighbour[0] = false;
             }
 
         });
 
     }
+
 }
+

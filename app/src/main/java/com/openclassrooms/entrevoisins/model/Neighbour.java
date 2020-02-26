@@ -1,5 +1,8 @@
 package com.openclassrooms.entrevoisins.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.openclassrooms.entrevoisins.service.DummyNeighbourGenerator;
 
 import java.util.Objects;
@@ -8,7 +11,7 @@ import java.util.Random;
 /**
  * Model object representing a Neighbour
  */
-public class Neighbour {
+public class Neighbour implements Parcelable {
 
     /** Identifier */
     private Integer id;
@@ -34,6 +37,29 @@ public class Neighbour {
         this.name = name;
         this.avatarUrl = avatarUrl;
         this.favorite = favorite;
+    }
+
+    public static final Creator<Neighbour> CREATOR = new Creator<Neighbour>() {
+        @Override
+        public Neighbour createFromParcel(Parcel parcel) {
+            return new Neighbour(parcel);
+        }
+
+        @Override
+        public Neighbour[] newArray(int size) {
+            return new Neighbour[0];
+        }
+    };
+
+    protected Neighbour(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readInt();
+        }
+        name = in.readString();
+        avatarUrl = in.readString();
+        favorite = in.readByte() != 0;
     }
 
     public Integer getId() {
@@ -81,5 +107,18 @@ public class Neighbour {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(avatarUrl);
+        parcel.writeBooleanArray(new boolean[]{favorite});
     }
 }
